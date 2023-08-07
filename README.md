@@ -1,2 +1,2 @@
 # PDF to Text
- Simple Script to extract text from (multiple) PDF(s)
+ Simple Script for extracting text from (multiple) PDF Files
