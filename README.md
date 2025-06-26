@@ -21,6 +21,7 @@ python PDFtoText.py <pdf_directory> <txt_directory> [-o] [-p <password>]
 ```
 - `<pdf_directory>`: The directory containing the PDF files.
 - `<txt_directory>`: The directory where the text files will be saved.
+- The output directory must already exist; the script does not create it.
 - `-o` or `--overwrite`: (Optional) If specified, existing text files will be overwritten. If not specified, existing text files will be skipped.
 - `-p <password>` or `--password <password>`: (Optional) If your PDFs are encrypted, you can provide the password using this option.
 

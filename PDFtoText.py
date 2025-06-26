@@ -25,6 +25,25 @@ def setup_logger():
 
 
 def extract_text_from_pdf(pdf_dir_path, txt_dir_path, overwrite, password):
+    """Extract text from PDF files and save each page into text files.
+
+    Parameters
+    ----------
+    pdf_dir_path : str
+        Directory containing the source PDF files.
+    txt_dir_path : str
+        Directory where the resulting ``.txt`` files will be written. The
+        directory must already exist.
+    overwrite : bool
+        If ``True``, existing ``.txt`` files in ``txt_dir_path`` will be
+        replaced. If ``False``, existing files are skipped.
+    password : str or None
+        Password used to open encrypted PDFs. ``None`` for unencrypted files.
+
+    The function logs progress and errors, creating one text file per PDF where
+    the text from each page is separated by a newline.
+    """
+
     pdf_files = glob.glob(os.path.join(pdf_dir_path, '*.pdf'))
     logging.info(f"Found {len(pdf_files)} PDF files")
 
@@ -42,7 +61,7 @@ def extract_text_from_pdf(pdf_dir_path, txt_dir_path, overwrite, password):
                         page_text = page.extract_text()
                         if page_text is not None:
                             txt_file.write(page_text)
-                            txt_file.write('\n')  # for separating pages
+                            txt_file.write('\n')  # add newline between pages
             logging.info(f"Successfully processed {pdf_file}")
         except Exception as e:
             logging.error(f"Failed to process {pdf_file}: {str(e)}")
