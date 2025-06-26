@@ -17,7 +17,7 @@ pip install pdfplumber tqdm argparse
 ## Usage
 You can run the script using the following command:
 ```bash
-python PDFtoText_improved.py <pdf_directory> <txt_directory> [-o] [-p <password>]
+python PDFtoText.py <pdf_directory> <txt_directory> [-o] [-p <password>]
 ```
 - `<pdf_directory>`: The directory containing the PDF files.
 - `<txt_directory>`: The directory where the text files will be saved.
