@@ -26,10 +26,12 @@ def setup_logger():
 
 def extract_text_from_pdf(pdf_dir_path, txt_dir_path, overwrite, password):
     pdf_files = glob.glob(os.path.join(pdf_dir_path, '*.pdf'))
+    pdf_files += glob.glob(os.path.join(pdf_dir_path, '*.PDF'))
     logging.info(f"Found {len(pdf_files)} PDF files")
 
     for pdf_file in tqdm(pdf_files, desc="Processing PDF files"):
-        txt_file_name = os.path.join(txt_dir_path, os.path.basename(pdf_file).replace('.pdf', '.txt'))
+        base_name, _ = os.path.splitext(os.path.basename(pdf_file))
+        txt_file_name = os.path.join(txt_dir_path, base_name + '.txt')
 
         if not overwrite and os.path.exists(txt_file_name):
             logging.warning(f"File {txt_file_name} already exists. Skipping...")
